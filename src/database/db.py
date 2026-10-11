@@ -137,6 +137,15 @@ def get_teacher_subjects(teacher_id):
         st.error(f"Error fetching teacher subjects: {e}")
         return []
 
+def get_enrolled_students_for_subject(subject_id):
+    query = (
+        supabase.table("subject_students")
+        .select("student_id, students(student_id, name)")
+        .eq("subject_id", subject_id)
+    )
+    response = safe_execute(query)
+    return response.data if response and response.data else []
+
 def enroll_to_subject(std_id, sub_id):
     data = {"student_id": std_id, "subject_id": sub_id}
     query = supabase.table("subject_students").insert(data)

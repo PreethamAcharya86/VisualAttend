@@ -12,7 +12,8 @@
 - **Instant Face‑Based Attendance** – Detects and recognizes multiple students from one classroom image.
 - **High‑Accuracy Face Recognition** – Utilises **dlib‑bin** and **face_recognition_models** to generate reliable facial encodings that work under varied lighting and angles.
 - **Teacher Portal** – Manage subjects, upload classroom photos, run AI‑powered attendance, and export attendance records.
-- **Student Dashboard** – View enrolled courses, attendance history, present/absent statistics, and real‑time attendance percentages.
+- **Subject-Specific Excel Export** – Download an enrolled-student attendance matrix with a subject heading and one date/time column per saved class.
+- **Student Dashboard** – View enrolled courses, attendance history, present/absent statistics, and real-time attendance percentages.
 - **Cloud‑Based Data Management** – Powered by **Supabase** for secure storage and real‑time sync of attendance data.
 - **Responsive Web Application** – Built with **Streamlit** for a fast, intuitive, and accessible UI.
 
@@ -60,3 +61,9 @@
    ```
 
 ---
+
+## Teacher Excel Export
+
+After taking attendance, open **Attendance Records**, select a subject at the bottom of the page, and choose **Download Excel**. The `.xlsx` workbook is generated from that subject's enrolled students and saved Supabase attendance records. It shows the subject name and code as the heading, one row per enrolled student, and one column per recorded class session. Each session heading puts the date and time (including seconds) on separate lines; cells show **Present** or **Absent**. Blank cells mean there is no saved status for that student/session. No separate spreadsheet entry is required.
+
+The Excel writer dependency, `XlsxWriter`, is included in `requirements.txt`.

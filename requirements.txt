@@ -2,6 +2,7 @@ streamlit  # -> Frontend library
 numpy
 pandas
 scikit-learn
+XlsxWriter
 
 dlib-bin    # ->Face recognisation
 git+https://github.com/ageitgey/face_recognition_models
@@ -14,4 +15,3 @@ Pillow  # -> img preprocess
 
 # Pin starlette to avoid GZipResponder signature incompatibility with Streamlit
 starlette<0.28
-
