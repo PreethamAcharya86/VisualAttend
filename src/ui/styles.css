@@ -909,6 +909,84 @@ button[kind="secondary"]:active,
   background: var(--white) !important;
 }
 
+.st-key-attendance-export-controls {
+  margin-top: 1.1rem !important;
+  margin-bottom: 1.5rem !important;
+  padding: 1rem 1.1rem 1.2rem !important;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #ffffff 0%, #f2f7ff 100%);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.07);
+}
+
+.st-key-attendance-export-controls
+  > div[data-testid="stVerticalBlock"] {
+  gap: 1.25rem !important;
+}
+
+.st-key-attendance-export-controls
+  [data-testid="stSelectbox"] {
+  margin-bottom: 0.45rem !important;
+}
+
+.st-key-attendance-export-controls
+  [data-testid="stDownloadButton"] {
+  margin-top: 0.35rem !important;
+}
+
+.st-key-attendance-export-controls
+  [data-testid="stSelectbox"]
+  [data-baseweb="select"] > div {
+  min-height: 2.8rem !important;
+  border: 1px solid #bfd3f4 !important;
+  border-radius: 10px !important;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f8ff 100%) !important;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.08) !important;
+}
+
+.st-key-attendance-export-controls
+  [data-testid="stSelectbox"]
+  [data-baseweb="select"]:hover > div {
+  border-color: #7da6e8 !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+}
+
+.st-key-attendance-export-controls
+  [data-testid="stSelectbox"]
+  [data-baseweb="select"] [data-testid="stMarkdownContainer"],
+.st-key-attendance-export-controls
+  [data-testid="stSelectbox"]
+  [data-baseweb="select"] div[role="combobox"] {
+  color: #1e3a5f !important;
+  font-weight: 600 !important;
+}
+
+.st-key-attendance-export-controls
+  [data-testid="stDownloadButton"] {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.st-key-attendance-export-controls
+  [data-testid="stDownloadButton"] button {
+  width: auto !important;
+  min-width: 220px !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+[role="listbox"] [role="option"] {
+  color: #243b5a !important;
+  background: #ffffff !important;
+}
+
+[role="listbox"] [role="option"]:hover,
+[role="listbox"] [role="option"][aria-selected="true"] {
+  color: #173b70 !important;
+  background: #eaf2ff !important;
+}
+
 /* Dialog Styles */
 [data-testid="stDialog"] {
   background-color: rgba(255, 255, 255, 0.85) !important;
@@ -1113,6 +1191,15 @@ div[role="dialog"] * {
   }
   .hero-card {
     padding: 1.2rem 1rem !important;
+  }
+  .st-key-attendance-export-controls {
+    padding: 0.85rem 0.8rem 1rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+  .st-key-attendance-export-controls
+    [data-testid="stDownloadButton"] button {
+    width: 100% !important;
+    min-width: 0 !important;
   }
   .feature-row {
     flex-direction: column;

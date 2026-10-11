@@ -40,46 +40,50 @@ def attendance_record() :
         return
 
     subject_by_id = {subject["subject_id"]: subject for subject in subjects}
-    subject_id = st.selectbox(
-        "Select subject to download attendance",
-        options=list(subject_by_id),
-        format_func=lambda selected_id: (
-            f"{subject_by_id[selected_id]['name']} "
-            f"({subject_by_id[selected_id]['subject_code']})"
-        ),
-        key="attendance_export_subject",
-    )
-    selected_subject = subject_by_id[subject_id]
-    enrolled_students = get_enrolled_students_for_subject(subject_id)
-    subject_records = [
-        record for record in records
-        if str(record.get("subject_id", (record.get("subjects") or {}).get("subject_id")))
-        == str(subject_id)
-    ]
-    date_columns, student_rows = build_student_attendance_matrix(
-        enrolled_students,
-        subject_records,
-    )
+    with st.container(key="attendance-export-controls"):
+        st.markdown("### Select subject to download attendance")
+        subject_id = st.selectbox(
+            "Subject",
+            options=list(subject_by_id),
+            format_func=lambda selected_id: (
+                f"{subject_by_id[selected_id]['name']} "
+                f"({subject_by_id[selected_id]['subject_code']})"
+            ),
+            key="attendance_export_subject",
+            label_visibility="collapsed",
+        )
+        selected_subject = subject_by_id[subject_id]
+        enrolled_students = get_enrolled_students_for_subject(subject_id)
+        subject_records = [
+            record for record in records
+            if str(record.get("subject_id", (record.get("subjects") or {}).get("subject_id")))
+            == str(subject_id)
+        ]
+        date_columns, student_rows = build_student_attendance_matrix(
+            enrolled_students,
+            subject_records,
+        )
 
-    safe_filename = re.sub(
-        r'[<>:"/\\|?*]+',
-        "_",
-        f"{selected_subject['subject_code']}_{selected_subject['name']}",
-    ).strip(" ._")
+        safe_filename = re.sub(
+            r'[<>:"/\\|?*]+',
+            "_",
+            f"{selected_subject['subject_code']}_{selected_subject['name']}",
+        ).strip(" ._")
 
-    class_heading = (
-        f"{selected_subject['name']} ({selected_subject['subject_code']})"
-    )
-    workbook = create_student_attendance_workbook(
-        class_heading,
-        date_columns,
-        student_rows,
-    )
+        class_heading = (
+            f"{selected_subject['name']} ({selected_subject['subject_code']})"
+        )
+        workbook = create_student_attendance_workbook(
+            class_heading,
+            date_columns,
+            student_rows,
+        )
 
-    st.download_button(
-        "Download Excel",
-        data=workbook,
-        file_name=f"{safe_filename}_attendance.xlsx",
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        type="primary",
-    )
+        st.download_button(
+            "Download Excel",
+            data=workbook,
+            file_name=f"{safe_filename}_attendance.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            type="primary",
+            key="attendance_export_download",
+        )
