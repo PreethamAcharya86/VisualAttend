@@ -26,6 +26,33 @@ def home_screen():
     style_base_layout()
     navbar()
 
+    assets_path = Path(__file__).resolve().parents[2] / "assets"
+    learning_svg = base64.b64encode((assets_path / "home_learning.svg").read_bytes()).decode("ascii")
+    attendance_svg = base64.b64encode((assets_path / "home_attendance.svg").read_bytes()).decode("ascii")
+
+    st.markdown(
+        f"""
+        <div class="home-page-marker" aria-hidden="true"></div>
+        <section class="home-hero">
+            <div class="home-hero-orbit">
+                <div class="home-hero-orbit-item home-hero-orbit-item--1" role="img" aria-label="Library" style="background-image:url('data:image/svg+xml;base64,{learning_svg}'); background-position:0% 50%;"></div>
+                <div class="home-hero-orbit-item home-hero-orbit-item--2" role="img" aria-label="Textbook" style="background-image:url('data:image/svg+xml;base64,{learning_svg}'); background-position:50% 50%;"></div>
+                <div class="home-hero-orbit-item home-hero-orbit-item--3" role="img" aria-label="Subjects" style="background-image:url('data:image/svg+xml;base64,{learning_svg}'); background-position:100% 50%;"></div>
+                <div class="home-hero-orbit-item home-hero-orbit-item--4" role="img" aria-label="Attendance roster" style="background-image:url('data:image/svg+xml;base64,{attendance_svg}'); background-position:0% 50%;"></div>
+                <div class="home-hero-orbit-item home-hero-orbit-item--5" role="img" aria-label="Daily attendance record" style="background-image:url('data:image/svg+xml;base64,{attendance_svg}'); background-position:50% 50%;"></div>
+                <div class="home-hero-orbit-item home-hero-orbit-item--6" role="img" aria-label="Verified present student" style="background-image:url('data:image/svg+xml;base64,{attendance_svg}'); background-position:100% 50%;"></div>
+                <div class="home-hero-content">
+                    <div class="hero-badge">AI-powered classroom attendance</div>
+                    <h1>VisualAttend</h1>
+                    <p>Smarter attendance. More time for learning.</p>
+                    <span class="home-hero-detail">Face recognition · Live insights · Simple class enrollment</span>
+                </div>
+            </div>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
+
     hero_image_path = Path(__file__).resolve().parents[1] / "Images" / "Project_icon.png"
     with hero_image_path.open("rb") as hero_image_file:
         hero_image_b64 = base64.b64encode(hero_image_file.read()).decode("ascii")

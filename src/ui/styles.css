@@ -454,6 +454,134 @@ div[data-testid="stHorizontalBlock"]:has(.st-key-back_btn) .stButton > button {
   line-height: 1.5;
 }
 
+.home-hero {
+  width: 100%;
+  margin: 0.6rem auto 0.25rem;
+  text-align: center;
+}
+
+.home-hero-orbit {
+  position: relative;
+  width: min(100%, 940px);
+  height: 520px;
+  margin: 0 auto;
+}
+
+.home-hero-orbit-item {
+  position: absolute;
+  width: 124px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  border-radius: 22px;
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+  background-color: var(--white);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.13);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.home-hero-orbit-item:hover {
+  transform: scale(1.06);
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.2);
+}
+
+.home-hero-orbit-item--1 {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.home-hero-orbit-item--1:hover {
+  transform: translateX(-50%) scale(1.06);
+}
+
+.home-hero-orbit-item--2 {
+  top: 22%;
+  right: 5%;
+}
+
+.home-hero-orbit-item--3 {
+  right: 5%;
+  bottom: 22%;
+}
+
+.home-hero-orbit-item--4 {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.home-hero-orbit-item--4:hover {
+  transform: translateX(-50%) scale(1.06);
+}
+
+.home-hero-orbit-item--5 {
+  bottom: 22%;
+  left: 5%;
+}
+
+.home-hero-orbit-item--6 {
+  top: 22%;
+  left: 5%;
+}
+
+.home-hero-content {
+  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(70%, 560px);
+  transform: translate(-50%, -50%);
+  padding: 1.5rem 0.75rem;
+  border-radius: var(--radius-lg);
+  background: rgba(248, 250, 252, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+.home-hero-content .hero-badge {
+  margin-bottom: 0.45rem;
+}
+
+.home-hero-content h1 {
+  margin: 0;
+  color: var(--blue-900);
+  background: linear-gradient(110deg, var(--blue-700), #7c3aed 55%, #0891b2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(2.8rem, 7vw, 5.2rem);
+  font-weight: 800;
+  letter-spacing: -0.065em;
+  line-height: 1.05;
+}
+
+.home-hero-content > p {
+  margin: 0.65rem 0 0.3rem;
+  color: var(--gray-800);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 600;
+}
+
+.home-hero-detail {
+  color: var(--gray-600);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.home-page-marker {
+  display: none;
+}
+
+html:has(.home-page-marker),
+body:has(.home-page-marker),
+html body [data-testid="stAppViewContainer"]:has(.home-page-marker),
+html body [data-testid="stMain"]:has(.home-page-marker),
+html body section.main:has(.home-page-marker) {
+  overflow-y: auto !important;
+}
+
 .teacher-dashboard-hero {
   display: flex;
   align-items: center;
@@ -1245,6 +1373,31 @@ div[role="dialog"] * {
   .teacher-login-artwork img {
     max-width: 220px;
     max-height: 24vh;
+  }
+  .home-hero-orbit {
+    height: 440px;
+  }
+  .home-hero-orbit-item {
+    width: 88px;
+    border-radius: 16px;
+  }
+  .home-hero-orbit-item--2,
+  .home-hero-orbit-item--3 {
+    right: 1%;
+  }
+  .home-hero-orbit-item--5,
+  .home-hero-orbit-item--6 {
+    left: 1%;
+  }
+  .home-hero-content {
+    width: 76%;
+    padding: 1rem 0.25rem;
+  }
+  .home-hero-content h1 {
+    font-size: clamp(2.6rem, 12vw, 4rem);
+  }
+  .home-hero-detail {
+    font-size: 0.72rem;
   }
   .student-empty-state img {
     max-width: 200px;
