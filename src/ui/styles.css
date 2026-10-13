@@ -820,13 +820,13 @@ html body section.main:has(.home-page-marker) {
 }
 
 /* Camera Input */
-[data-testid="stCameraInput"] {
+.st-key-student_login_camera [data-testid="stCameraInput"] {
   width: 100% !important;
   max-width: 720px !important;
   margin: 0 auto 0.8rem auto !important;
 }
 
-[data-testid="stCameraInputWebcamComponent"] {
+.st-key-student_login_camera [data-testid="stCameraInputWebcamComponent"] {
   width: 100% !important;
   min-height: 440px !important;
   border: 2px dashed var(--blue-200) !important;
@@ -835,12 +835,12 @@ html body section.main:has(.home-page-marker) {
   transition: border-color 0.2s ease !important;
 }
 
-[data-testid="stCameraInputWebcamComponent"] > div {
+.st-key-student_login_camera [data-testid="stCameraInputWebcamComponent"] > div {
   width: 100% !important;
   max-width: 100% !important;
 }
 
-[data-testid="stCameraInputWebcamComponent"]:hover {
+.st-key-student_login_camera [data-testid="stCameraInputWebcamComponent"]:hover {
   border-color: var(--blue-500) !important;
 }
 
@@ -1374,13 +1374,13 @@ div[role="dialog"] * {
     padding-right: 1rem !important;
     max-width: 100% !important;
   }
-  [data-testid="stCameraInput"] {
+  .st-key-student_login_camera [data-testid="stCameraInput"] {
     max-width: 100% !important;
   }
-  [data-testid="stCameraInputWebcamComponent"] {
+  .st-key-student_login_camera [data-testid="stCameraInputWebcamComponent"] {
     min-height: min(62vh, 520px) !important;
   }
-  [data-testid="stCameraInputWebcamComponent"] video {
+  .st-key-student_login_camera [data-testid="stCameraInputWebcamComponent"] video {
     width: 100% !important;
     height: min(120vw, 520px) !important;
     object-fit: cover !important;

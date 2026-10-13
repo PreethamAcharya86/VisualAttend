@@ -41,7 +41,10 @@ def student_screen():
         unsafe_allow_html=True,
     )
 
-    img_source = st.camera_input("Position your face in the center of the frame")
+    img_source = st.camera_input(
+        "Position your face in the center of the frame",
+        key="student_login_camera",
+    )
 
     if img_source:
         img = np.array(Image.open(img_source))
