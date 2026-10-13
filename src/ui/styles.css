@@ -1378,12 +1378,27 @@ div[role="dialog"] * {
     max-width: 100% !important;
   }
   .st-key-student_login_camera [data-testid="stCameraInputWebcamComponent"] {
-    min-height: min(62vh, 520px) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+  .st-key-student_login_camera [data-testid="stCameraInputWebcamStyledBox"] {
+    width: 100% !important;
+    height: auto !important;
+    flex: none !important;
   }
   .st-key-student_login_camera [data-testid="stCameraInputWebcamComponent"] video {
     width: 100% !important;
-    height: min(120vw, 520px) !important;
+    height: min(120vw, 62vh, 520px) !important;
     object-fit: cover !important;
+  }
+  .st-key-student_login_camera [data-testid="stCameraInputButton"] {
+    position: static !important;
+    flex: none !important;
+    margin-top: 0 !important;
   }
   div[data-testid="stHorizontalBlock"]:has(.teacher-login-artwork) > div[data-testid="stColumn"]:has(.teacher-login-artwork) {
     display: none !important;
