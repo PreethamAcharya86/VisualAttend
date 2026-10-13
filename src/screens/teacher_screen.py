@@ -24,6 +24,10 @@ def teacher_screen():
 
 
 def teacher_screen_login():
+    if st.button("Back", key="teacher_login_back", icon=":material/arrow_back:"):
+        st.session_state["login_type"] = "choose"
+        st.rerun()
+
     image_path = Path(__file__).resolve().parents[2] / "assets" / "login_image.png"
     with image_path.open("rb") as image_file:
         encoded_image = base64.b64encode(image_file.read()).decode("ascii")

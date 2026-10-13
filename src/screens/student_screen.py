@@ -22,7 +22,9 @@ def student_screen():
         student_dashboard()
         return
 
-    back()
+    if st.button("Back", key="student_login_back", icon=":material/arrow_back:"):
+        st.session_state["login_type"] = "choose"
+        st.rerun()
 
     st.markdown(
         """

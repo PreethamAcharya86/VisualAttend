@@ -821,22 +821,26 @@ html body section.main:has(.home-page-marker) {
 
 /* Camera Input */
 [data-testid="stCameraInput"] {
-  max-width: 560px !important;
+  width: 100% !important;
+  max-width: 720px !important;
   margin: 0 auto 0.8rem auto !important;
 }
 
-[data-testid="stCameraInput"] > section {
-  min-height: 360px !important;
-}
-
-[data-testid="stCameraInput"] > section {
+[data-testid="stCameraInputWebcamComponent"] {
+  width: 100% !important;
+  min-height: 440px !important;
   border: 2px dashed var(--blue-200) !important;
   border-radius: var(--radius-md) !important;
   background: var(--white) !important;
   transition: border-color 0.2s ease !important;
 }
 
-[data-testid="stCameraInput"] > section:hover {
+[data-testid="stCameraInputWebcamComponent"] > div {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+[data-testid="stCameraInputWebcamComponent"]:hover {
   border-color: var(--blue-500) !important;
 }
 
@@ -1370,9 +1374,25 @@ div[role="dialog"] * {
     padding-right: 1rem !important;
     max-width: 100% !important;
   }
-  .teacher-login-artwork img {
-    max-width: 220px;
-    max-height: 24vh;
+  [data-testid="stCameraInput"] {
+    max-width: 100% !important;
+  }
+  [data-testid="stCameraInputWebcamComponent"] {
+    min-height: min(62vh, 520px) !important;
+  }
+  [data-testid="stCameraInputWebcamComponent"] video {
+    width: 100% !important;
+    height: min(120vw, 520px) !important;
+    object-fit: cover !important;
+  }
+  div[data-testid="stHorizontalBlock"]:has(.teacher-login-artwork) > div[data-testid="stColumn"]:has(.teacher-login-artwork) {
+    display: none !important;
+  }
+  div[data-testid="stHorizontalBlock"]:has(.teacher-login-artwork) > div[data-testid="stColumn"]:not(:has(.teacher-login-artwork)) {
+    flex: 1 1 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
   }
   .home-hero-orbit {
     display: grid;
@@ -1411,6 +1431,9 @@ div[role="dialog"] * {
     position: relative;
     top: auto;
     left: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     grid-column: 1 / -1;
     grid-row: 1;
     justify-self: center;
@@ -1420,11 +1443,23 @@ div[role="dialog"] * {
     margin: 0 auto;
     padding: 0.85rem 0.4rem;
     border-radius: 18px;
+    box-sizing: border-box;
+    text-align: center;
     transform: none;
   }
   .home-hero-content h1 {
+    position: relative;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
     font-size: clamp(1.5rem, 7.5vw, 2.2rem);
     letter-spacing: -0.07em;
+    text-align: center !important;
+  }
+  .home-hero-content h1 [data-testid="stHeaderActionElements"] {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
   .home-hero-content .hero-badge {
     padding: 0.25rem 0.45rem;
