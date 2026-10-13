@@ -737,44 +737,36 @@ div[data-testid="stHorizontalBlock"]:has(.teacher-login-artwork) {
   object-fit: contain;
 }
 
-.student-empty-state-image,
-.student-empty-state-message {
-  display: flex;
+.student-empty-state {
+  display: flex !important;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-}
-
-div[data-testid="stHorizontalBlock"]:has(.student-empty-state-image)
-  [data-testid="stImage"] {
-  display: flex;
-  justify-content: center;
-}
-
-.student-empty-state-message {
-  flex-direction: column;
-  padding: 1.5rem;
-  color: var(--gray-600);
+  padding: 1rem;
   text-align: center;
 }
 
-.student-empty-state-message p {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 500;
+.student-empty-state h4 {
+  margin: 0 0 0.75rem;
+  color: var(--blue-900);
+  font-size: 1.15rem;
+  font-weight: 800;
 }
 
-.student-empty-state-message p + p {
-  margin-top: 0.3rem;
-  font-size: 0.88rem;
-  font-weight: 400;
+.student-empty-state img {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  object-fit: contain;
 }
 
-html:has(.student-empty-state-image),
-body:has(.student-empty-state-image),
-[data-testid="stAppViewContainer"]:has(.student-empty-state-image),
-[data-testid="stMain"]:has(.student-empty-state-image),
-section.main:has(.student-empty-state-image) {
+html:has(.student-empty-state),
+body:has(.student-empty-state),
+html body [data-testid="stAppViewContainer"]:has(.student-empty-state),
+html body [data-testid="stMain"]:has(.student-empty-state),
+html body section.main:has(.student-empty-state) {
   overflow-y: auto !important;
 }
 
@@ -1254,13 +1246,8 @@ div[role="dialog"] * {
     max-width: 220px;
     max-height: 24vh;
   }
-  div[data-testid="stHorizontalBlock"]:has(.student-empty-state-image)
-    [data-testid="stImage"] img {
-    max-width: 200px !important;
-    height: auto !important;
-  }
-  .student-empty-state-message {
-    padding: 0.5rem;
+  .student-empty-state img {
+    max-width: 200px;
   }
   .hero-card {
     padding: 1.2rem 1rem !important;

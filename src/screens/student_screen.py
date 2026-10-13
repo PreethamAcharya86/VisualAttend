@@ -168,24 +168,18 @@ def student_dashboard():
 
     if not subjects:
         image_path = Path(__file__).resolve().parents[2] / "assets" / "not_found_img.png"
+        with image_path.open("rb") as image_file:
+            encoded_image = base64.b64encode(image_file.read()).decode("ascii")
 
-        image_col, message_col = st.columns(2, gap="large", vertical_alignment="center")
-        with image_col:
-            st.markdown(
-                '<div class="student-empty-state-image" aria-hidden="true"></div>',
-                unsafe_allow_html=True,
-            )
-            st.image(image_path, width=320, caption="No subjects found")
-        with message_col:
-            st.markdown(
-                """
-                <div class="student-empty-state-message">
-                    <p>You are not enrolled in any classes yet.</p>
-                    <p>Click <strong>Enroll in Class</strong> above to join a subject.</p>
-                </div>
-                """,
-                unsafe_allow_html=True,
-            )
+        st.markdown(
+            f"""
+            <div class="student-empty-state">
+                <h4>Page not found</h4>
+                <img src="data:image/png;base64,{encoded_image}" alt="Page not found" />
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
         return
 
     stats_map = {}
