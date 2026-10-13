@@ -1375,29 +1375,62 @@ div[role="dialog"] * {
     max-height: 24vh;
   }
   .home-hero-orbit {
-    height: 440px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto auto auto;
+    align-items: center;
+    justify-items: center;
+    gap: 0.65rem 0.4rem;
+    width: min(100%, 440px);
+    height: auto;
+    padding: 0.5rem 0;
   }
   .home-hero-orbit-item {
-    width: 88px;
-    border-radius: 16px;
+    position: relative;
+    inset: auto;
+    width: clamp(52px, 16vw, 64px);
+    border-radius: 14px;
+    transform: none;
+    order: 1;
   }
-  .home-hero-orbit-item--2,
-  .home-hero-orbit-item--3 {
-    right: 1%;
-  }
+  .home-hero-orbit-item--4,
   .home-hero-orbit-item--5,
   .home-hero-orbit-item--6 {
-    left: 1%;
+    order: 3;
+  }
+  .home-hero-orbit-item--1:hover,
+  .home-hero-orbit-item--4:hover {
+    transform: scale(1.06);
   }
   .home-hero-content {
-    width: 76%;
-    padding: 1rem 0.25rem;
+    position: relative;
+    top: auto;
+    left: auto;
+    grid-column: 1 / -1;
+    order: 2;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    padding: 0.85rem 0.4rem;
+    border-radius: 18px;
+    transform: none;
   }
   .home-hero-content h1 {
-    font-size: clamp(2.6rem, 12vw, 4rem);
+    font-size: clamp(1.5rem, 7.5vw, 2.2rem);
+    letter-spacing: -0.07em;
+  }
+  .home-hero-content .hero-badge {
+    padding: 0.25rem 0.45rem;
+    font-size: 0.68rem;
+  }
+  .home-hero-content > p {
+    font-size: 0.92rem;
+    line-height: 1.35;
   }
   .home-hero-detail {
-    font-size: 0.72rem;
+    display: block;
+    font-size: 0.66rem;
+    line-height: 1.45;
   }
   .student-empty-state img {
     max-width: 200px;
