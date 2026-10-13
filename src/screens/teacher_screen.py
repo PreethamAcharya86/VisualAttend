@@ -24,21 +24,35 @@ def teacher_screen():
 
 
 def teacher_screen_login():
-    st.markdown(
-        """
-        <div style="text-align:center; margin-bottom:1.2rem;">
-            <div style="width:48px; height:48px; background:var(--blue-50); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:0.5rem;">
-                <span class="material-symbols-outlined" style="color:var(--blue-600); font-size:26px;">lock</span>
-            </div>
-            <h2 style="margin:0; color:var(--blue-900); font-size:1.6rem; font-weight:800;">Teacher Login</h2>
-            <p style="color:var(--gray-600); font-size:0.93rem; margin-top:0.3rem;">Sign in to access your teacher portal.</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    image_path = Path(__file__).resolve().parents[2] / "assets" / "login_image.png"
+    with image_path.open("rb") as image_file:
+        encoded_image = base64.b64encode(image_file.read()).decode("ascii")
 
-    _, mid_col, _ = st.columns([1, 1.8, 1])
-    with mid_col:
+    image_col, login_col = st.columns(2, gap="large", vertical_alignment="center")
+    with image_col:
+        st.markdown(
+            f"""
+            <div class="teacher-login-artwork">
+                <img src="data:image/png;base64,{encoded_image}" alt="Teacher login illustration" />
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    with login_col:
+        st.markdown(
+            """
+            <div style="text-align:center; margin-bottom:1.2rem;">
+                <div style="width:48px; height:48px; background:var(--blue-50); border-radius:50%; display:inline-flex; align-items:center; justify-content:center; margin-bottom:0.5rem;">
+                    <span class="material-symbols-outlined" style="color:var(--blue-600); font-size:26px;">lock</span>
+                </div>
+                <h2 style="margin:0; color:var(--blue-900); font-size:1.6rem; font-weight:800;">Teacher Login</h2>
+                <p style="color:var(--gray-600); font-size:0.93rem; margin-top:0.3rem;">Sign in to access your teacher portal.</p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
         with st.container(border=True):
             teacher_username = st.text_input("Username", placeholder='Enter your username')
             teacher_password = st.text_input("Password", type="password", placeholder='Enter your password')

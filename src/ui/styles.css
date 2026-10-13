@@ -717,6 +717,67 @@ div[data-testid="stHorizontalBlock"]:has(.st-key-back_btn) .stButton > button {
   margin: 0.5rem auto;
 }
 
+div[data-testid="stHorizontalBlock"]:has(.teacher-login-artwork) {
+  align-items: center !important;
+  margin-top: clamp(1.5rem, 5vh, 3rem) !important;
+}
+
+.teacher-login-artwork {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.teacher-login-artwork img {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  max-height: 68vh;
+  object-fit: contain;
+}
+
+.student-empty-state-image,
+.student-empty-state-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+div[data-testid="stHorizontalBlock"]:has(.student-empty-state-image)
+  [data-testid="stImage"] {
+  display: flex;
+  justify-content: center;
+}
+
+.student-empty-state-message {
+  flex-direction: column;
+  padding: 1.5rem;
+  color: var(--gray-600);
+  text-align: center;
+}
+
+.student-empty-state-message p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.student-empty-state-message p + p {
+  margin-top: 0.3rem;
+  font-size: 0.88rem;
+  font-weight: 400;
+}
+
+html:has(.student-empty-state-image),
+body:has(.student-empty-state-image),
+[data-testid="stAppViewContainer"]:has(.student-empty-state-image),
+[data-testid="stMain"]:has(.student-empty-state-image),
+section.main:has(.student-empty-state-image) {
+  overflow-y: auto !important;
+}
+
 [data-testid="stForm"],
 .auth-container {
   max-width: 420px !important;
@@ -1188,6 +1249,18 @@ div[role="dialog"] * {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
     max-width: 100% !important;
+  }
+  .teacher-login-artwork img {
+    max-width: 220px;
+    max-height: 24vh;
+  }
+  div[data-testid="stHorizontalBlock"]:has(.student-empty-state-image)
+    [data-testid="stImage"] img {
+    max-width: 200px !important;
+    height: auto !important;
+  }
+  .student-empty-state-message {
+    padding: 0.5rem;
   }
   .hero-card {
     padding: 1.2rem 1rem !important;

@@ -167,15 +167,25 @@ def student_dashboard():
         logs = get_student_attendance(student_id)
 
     if not subjects:
-        st.markdown(
-            """
-            <div style="text-align:center; padding:2rem 1rem; color:var(--gray-600);">
-                <p style="margin:0; font-size:1rem; font-weight:500;">You are not enrolled in any classes yet.</p>
-                <p style="margin:0.3rem 0 0; font-size:0.88rem;">Click <strong>Enroll in Class</strong> above to join a subject.</p>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        image_path = Path(__file__).resolve().parents[2] / "assets" / "not_found_img.png"
+
+        image_col, message_col = st.columns(2, gap="large", vertical_alignment="center")
+        with image_col:
+            st.markdown(
+                '<div class="student-empty-state-image" aria-hidden="true"></div>',
+                unsafe_allow_html=True,
+            )
+            st.image(image_path, width=320, caption="No subjects found")
+        with message_col:
+            st.markdown(
+                """
+                <div class="student-empty-state-message">
+                    <p>You are not enrolled in any classes yet.</p>
+                    <p>Click <strong>Enroll in Class</strong> above to join a subject.</p>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
         return
 
     stats_map = {}
